@@ -29,11 +29,13 @@ if (ctx == NULL) {
    return -1;
  } 
  ```
-
+```
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); 
-
+```
+```
 modbus_connect(ctx); 
-
+```
+```
 mb_mapping = modbus_mapping_new(0, 0, 20, 0); 
 if (mb_mapping == NULL) {
     fprintf(
@@ -43,23 +45,27 @@ if (mb_mapping == NULL) {
     modbus_free(ctx);
     return -1;
   }
-
-
+```
+```
 socket = modbus_tcp_listen(ctx, 1); 
  if (socket == -1) {
     fprintf(stderr, "%s\n", modbus_strerror(errno));
     modbus_free(ctx);
     return -1;
   }
-
+```
+```
 modbus_tcp_accept(ctx, &socket);
-
+```
+```
 modbus_set_float_dcba(temp=get_cpu_temp()+0.5, mb_mapping->tab_registers+i);
-
+```
+```
 rc = modbus_receive(ctx, query); 
-
+```
+```
 modbus_reply(ctx, query, rc, mb_mapping);
-
+```
 ## Instalacija Operativnog sistema i osnovna konfiguracija Raspberry Pi platforme
 Prvi korak je formatiranje SD kartice pomoću aplikacije SD Card Formatter. Aplikaciju možemo preuzeti sa linka https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/.  SD kartici pristupamo preko čitača SD kartica koji je priključen na računar. 
 Sljedeći korak je instalacija operativnog sistema. Potrebno je instalirati softver Raspberry Pi Imager koji možemo preuzeti sa linka https://www.raspberrypi.com/software/. Bitno je odabrati varijantu Raspberry Pi OS (other) -> Raspberry Pi OS Lite (32-bit) operativnog sistema. Nakon što smo selektovali našu SD karticu u polju Storage prelazimo na podešavanje pristupa Raspberry Pi-a. Podešavamo hostname, username, password i potrebno je omogućiti SSH pristup. 
