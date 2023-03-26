@@ -22,6 +22,10 @@ Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili 
 Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol koriste se biblioteka [libmodbus](https://libmodbus.org/).
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
+U nastavku je navedeno nekoliko btnih funkcija koje smo koristili za uspostavljanje Modbus TCP komunikacije, a koje se nalaze u ***libmodbus*** biblioteci.
+
+Funkcija ***modbus_new_tcp*** kreira novi libmodbus konktekst za TCP/IPv4.
+Argument IP specificira IP adresu servera sa kojim klijent želi da uspostavi vezu, a argument PORT je TCP port koji treba koristiti.
 ```
  ctx = modbus_new_tcp("192.168.100.102", 502);  
 if (ctx == NULL) {
@@ -29,6 +33,8 @@ if (ctx == NULL) {
    return -1;
  } 
  ```
+U Master skripti funkcija *** modbus_read_registers*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
+Rezultat čitanja se čuva u nizu tab_reg.
 ```
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); 
 ```
