@@ -1,5 +1,3 @@
-# Ciljevi i ishodi
-
 
 # MODBUS
 
@@ -11,7 +9,7 @@ Koriste se tri tipa Modbus prenosa:
 2. Modbus TCP
 3. ASCII
 
-# MODBUS-TCP
+## MODBUS-TCP
 
 Modbus TCP/IP (Transmission Control protocol/Internet protocol) je jednostavan Modbus protokol koji radi na Eternetu preko TCP interfejsa.
 Modbus TCP/IP je takodje poznat kao Modbus TCP.
@@ -23,7 +21,9 @@ Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol korist
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
 
-# Instalacija Operativnog sistema i osnovna konfiguracija Raspberry Pi platforme
+## Instalacija Operativnog sistema i osnovna konfiguracija Raspberry Pi platforme
 Prvi korak je formatiranje SD kartice pomoću aplikacije SD Card Formatter. Aplikaciju možemo preuzeti sa linka https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/.  SD kartici pristupamo preko čitača SD kartica koji je priključen na računar. 
 Sljedeći korak je instalacija operativnog sistema. Potrebno je instalirati softver Raspberry Pi Imager koji možemo preuzeti sa linka https://www.raspberrypi.com/software/. Bitno je odabrati varijantu Raspberry Pi OS (other) -> Raspberry Pi OS Lite (32-bit) operativnog sistema. Nakon što smo selektovali našu SD karticu u polju Storage prelazimo na podešavanje pristupa Raspberry Pi-a. Podešavamo hostname, username, password i potrebno je omogućiti SSH pristup. 
 Treći korak jeste da podesimo statičku IP adresu na Raspberry Pi platformi, jer je pristup pomoću IP adrese mnogo pouzdanije rješenje. Prije svega treba da podesimo staticku IP adresu na računaru. Osim toga problem pristupa stvara Windows Firewall pa je potrebno sve isključiti. Iz Command Prompt-a pomoću komande ssh pi@hostname.local pristupamo Raspberri Pi. Zatim komandom sudo nano /etc/dhcpcd.conf mijenjamo postojeću adresu.
+
+## Ciljevi i ishodi
