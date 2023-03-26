@@ -27,7 +27,8 @@ http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i v
 if (ctx == NULL) {
    fprintf(stderr, "Unable to allocate libmodbus context\n");
    return -1;
- } ```
+ } 
+ ```
 
 
 
