@@ -17,9 +17,20 @@ Kada se Modbus informacije šalju korišćenjem ovih protokola, podaci se prosle
 Ovaj protokol je zapravo verzija Modbus RTU transfera koja je prilagodjena Ethernet okruženju.
 Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili transferu.
 
+##Libmodbus 
+
 Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol koriste se biblioteka [libmodbus](https://libmodbus.org/).
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
+
+''' ctx = modbus_new_tcp("192.168.100.102", 502);  
+if (ctx == NULL) {
+   fprintf(stderr, "Unable to allocate libmodbus context\n");
+   return -1;
+ } '''
+
+
+
 
 ## Instalacija Operativnog sistema i osnovna konfiguracija Raspberry Pi platforme
 Prvi korak je formatiranje SD kartice pomoću aplikacije SD Card Formatter. Aplikaciju možemo preuzeti sa linka https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/.  SD kartici pristupamo preko čitača SD kartica koji je priključen na računar. 
