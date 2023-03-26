@@ -17,14 +17,14 @@ Kada se Modbus informacije šalju korišćenjem ovih protokola, podaci se prosle
 Ovaj protokol je zapravo verzija Modbus RTU transfera koja je prilagodjena Ethernet okruženju.
 Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili transferu.
 
-##Libmodbus 
+## Libmodbus 
 
 Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol koriste se biblioteka [libmodbus](https://libmodbus.org/).
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
 U nastavku je navedeno nekoliko btnih funkcija koje smo koristili za uspostavljanje Modbus TCP komunikacije, a koje se nalaze u ***libmodbus*** biblioteci.
 
-Funkcija ***modbus_new_tcp*** kreira novi libmodbus konktekst za TCP/IPv4.
+Funkcija ***modbus_new_tcp()*** kreira novi libmodbus konktekst za TCP/IPv4.
 Argument IP specificira IP adresu servera sa kojim klijent želi da uspostavi vezu, a argument PORT je TCP port koji treba koristiti.
 ```
  ctx = modbus_new_tcp("192.168.100.102", 502);  
@@ -33,14 +33,16 @@ if (ctx == NULL) {
    return -1;
  } 
  ```
-U Master skripti funkcija *** modbus_read_registers*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
+U Master skripti funkcija ***modbus_read_registers()*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
 Rezultat čitanja se čuva u nizu tab_reg.
 ```
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); 
 ```
+Funkcija ***modbus_connect()*** će uspostaviti vezu sa Modbus serverom koriteći informacije libmodbus konteksta date u argumentu.
 ```
 modbus_connect(ctx); 
 ```
+Naredna funkcija ima ulogu da dodijeli 4 niza za skladištenje bitova, ulaznih bitova, registara i ulaznih registara.
 ```
 mb_mapping = modbus_mapping_new(0, 0, 20, 0); 
 if (mb_mapping == NULL) {
@@ -52,6 +54,7 @@ if (mb_mapping == NULL) {
     return -1;
   }
 ```
+
 ```
 socket = modbus_tcp_listen(ctx, 1); 
  if (socket == -1) {
