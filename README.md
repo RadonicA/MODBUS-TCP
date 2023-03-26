@@ -23,11 +23,11 @@ Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol korist
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
 
-''' ctx = modbus_new_tcp("192.168.100.102", 502);  
+``` ctx = modbus_new_tcp("192.168.100.102", 502);  
 if (ctx == NULL) {
    fprintf(stderr, "Unable to allocate libmodbus context\n");
    return -1;
- } '''
+ } ```
 
 
 
