@@ -54,7 +54,7 @@ if (mb_mapping == NULL) {
     return -1;
   }
 ```
-
+Naredna funkcija kreira socket i sluša zahtjeve koji dolaze od odredjene IP adrese.
 ```
 socket = modbus_tcp_listen(ctx, 1); 
  if (socket == -1) {
@@ -63,15 +63,20 @@ socket = modbus_tcp_listen(ctx, 1);
     return -1;
   }
 ```
+Nakon uspješne predhodne funkcije, neophodno je izdvojiti prvu vezu u redu čekanja, kreirati novi socket i sačuvati je u libmodbus kontekstu datom u argumentu.
+
 ```
 modbus_tcp_accept(ctx, &socket);
 ```
+Naredna funkcija postvlja float vrijednost temperature i upisuje je u registar.
 ```
 modbus_set_float_dcba(temp=get_cpu_temp()+0.5, mb_mapping->tab_registers+i);
 ```
+Nakon toga, primamo zahtjev od soketa iz datog konteksta.
 ```
 rc = modbus_receive(ctx, query); 
 ```
+Funkcija ***modbus_reply()*** šalje odgovor na primljeni zahtjev.
 ```
 modbus_reply(ctx, query, rc, mb_mapping);
 ```
