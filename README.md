@@ -1,3 +1,6 @@
+# Ciljevi i ishodi
+
+
 # MODBUS
 
 Modbus je serijski komunikacioni protokol predstavljen 1979. godine od strane kompanije Modicon.
