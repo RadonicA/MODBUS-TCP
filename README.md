@@ -8,7 +8,7 @@ Koriste se tri tipa Modbus prenosa:
 2. Modbus TCP
 3. ASCII
 
-#MODBUS-TCP
+# MODBUS-TCP
 
 Modbus TCP/IP (Transmission Control protocol/Internet protocol) je jednostavan Modbus protokol koji radi na Eternetu preko TCP interfejsa.
 Modbus TCP/IP je takodje poznat kao Modbus TCP.
