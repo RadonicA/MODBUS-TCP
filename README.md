@@ -19,7 +19,7 @@ Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili 
 
 ## Eskperimentalna realizacija MODBUS TCP protokola 
 
-Jedan Raspberry Pi je u ulozi klijenta (Modbus Master), a drugi Raspberry Pi ima ulogu servera (Modbus Slave). Na zahtjev Mastera, Slave ocitava vrijednost temperature procesora Rpi-a, mapira tu vrijednost u registar i salje ga u odgovoru Masteru.   
+Jedan Raspberry Pi je u ulozi klijenta (Modbus Master), a drugi Raspberry Pi ima ulogu servera (Modbus Slave). Na zahtjev Mastera, Slave ocitava vrijednost temperature procesora Rpi-a, mapira tu vrijednost u prostor modbus adresa i salje ga u odgovoru Masteru.   
 
 
 ## Libmodbus 
