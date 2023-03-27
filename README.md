@@ -38,7 +38,7 @@ if (ctx == NULL) {
    return -1;
  } 
  ```
-U Master skripti funkcija *** modbus_read_registers*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
+U Master skripti funkcija ***modbus_read_registers*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
 Rezultat čitanja se čuva u nizu tab_reg.
 ```
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); 
