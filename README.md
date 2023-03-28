@@ -131,3 +131,7 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
  **Modbus Confirmation**- klijent prima potvrdu sa strane servera, te se uspostavlja konekcija i pocinje prenos podataka
  
   Wireshark je softver koji nam omogucava da prikazemo i **throughput**(kolicinu korisnih podataka koji se prenose u jedinici vremena).
+  
+  
+  ## Modbus TCP convert to RTU
+  
