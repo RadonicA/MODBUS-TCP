@@ -18,6 +18,8 @@ Kada se Modbus informacije šalju korišćenjem ovih protokola, podaci se prosle
 Ovaj protokol je zapravo verzija Modbus RTU transfera koja je prilagodjena Ethernet okruženju.
 Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili transferu.
 
+
+
 ## Eskperimentalna realizacija MODBUS TCP protokola 
 
 Jedan Raspberry Pi je u ulozi klijenta (Modbus Master), a drugi Raspberry Pi ima ulogu servera (Modbus Slave). Na zahtjev Mastera, Slave ocitava vrijednost temperature procesora Rpi-a, mapira tu vrijednost u prostor modbus adresa i salje ga u odgovoru Masteru.   
