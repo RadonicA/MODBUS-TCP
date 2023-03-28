@@ -155,3 +155,5 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
      modbus_write_bit(ctx, COIL_ADDRESS, TRUE); 
   ```
 Kao krajnji uređaj koristimo relej koji se uključuje upisivanjem logičke jedinice u njegovu adresu.
+
+***Detaljnije objašnjenje principa rada
