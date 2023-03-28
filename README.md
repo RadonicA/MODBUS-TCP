@@ -146,4 +146,6 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
   Drugi argument ima vrijednost 9600 i predstavlja brzinu prenosa komunikacije, dok data_bits odredjuje broj bitova podataka i u našem slučaju iznosi 8.
   Na kraju, imamo i jedan stop_bit.
   
-
+   ```
+    modbus_rtu_set_serial_mode(ctx, MODBUS_RTU_RS485);
+ ```
