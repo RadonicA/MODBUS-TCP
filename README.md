@@ -116,4 +116,18 @@ Prvi korak je formatiranje SD kartice pomoću aplikacije SD Card Formatter. Apli
 Sljedeći korak je instalacija operativnog sistema. Potrebno je instalirati softver Raspberry Pi Imager koji možemo preuzeti sa [linka](https://www.raspberrypi.com/software/). Bitno je odabrati varijantu Raspberry Pi OS (other) -> Raspberry Pi OS Lite (32-bit) operativnog sistema. Nakon što smo selektovali našu SD karticu u polju Storage prelazimo na podešavanje pristupa Raspberry Pi-a. Podešavamo hostname, username, password i potrebno je omogućiti SSH pristup. 
 Treći korak jeste da podesimo statičku IP adresu na Raspberry Pi platformi, jer je pristup pomoću IP adrese mnogo pouzdanije rješenje. Prije svega treba da podesimo staticku IP adresu na računaru. Osim toga problem pristupa stvara Windows Firewall pa je potrebno sve isključiti. Iz Command Prompt-a pomoću komande ssh pi@hostname.local pristupamo Raspberri Pi. Zatim komandom : sudo nano /etc/dhcpcd.conf mijenjamo postojeću adresu.
 
-## Ciljevi i ishodi
+## Wireshark
+
+Wireshark je softver za analizu mrežnog saobraćaja. To je alat koji hvata različite mrežne pakete i detaljno ih razlaže. Kada se ovi paketi razbiju, možemo ih koristiti za analizu u realnom vremenu ili van mreže.
+Za instalaciju Wireshark softvera potrebno je ispratiti korake na [link]https://www.geeksforgeeks.org/how-to-install-and-use-wireshark-on-ubuntu-linux/)
+Na slici ispod je prikazan segment Modbus TCP komunikacije u Wireshark-u
+![image](https://user-images.githubusercontent.com/127748379/228214315-6a60780d-274e-45c9-83d3-5aa5ef63a6a2.png)
+
+Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju izmedju uredjaja povezanih na fizicku mrezu(Ethernet).Prije prenosa podataka zahtijeva potvrdu o uspostavljanju konekcije, tako da u Wireshark-u vidimo cetiri poruke:
+
+ **Modbus Request**- klijent salje zahtjev serveru za uspostavljanje konekcije, vrsi se sinhronizacija obije strane\
+ **Modbus Indication**- server prima zahtjev za uspostavljanje konekcije \
+ **Modbus Response**- server salje potvrdu(ACK) o primljenoj poruci \
+ **Modbus Confirmation**- klijent prima potvrdu sa strane servera, te se uspostavlja konekcija i pocinje prenos podataka
+ 
+  Wireshark je softver koji nam omogucava da prikazemo i **throughput**(kolicinu korisnih podataka koji se prenose u jedinici vremena)
