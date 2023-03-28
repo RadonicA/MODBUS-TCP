@@ -6,9 +6,9 @@ Modbus je aplikacioni protokol koji dodjejuje načine upravljanja i prosljedjiva
 Ovaj protokol je master/slave protokol sa half-duplex prenosom iz grupe Filedbus protokola.
 Osnovne prednosti Modbus protokola su to da je razvijen za industrijske primjene, ima otvorenu specifikaciju bez troškova licence i jednostavan je za implementaciju i održavanje.
 Koriste se tri tipa Modbus prenosa:
-1. Modbus RTU- koristi RS-485, binarna verzija razmjene podataka
-2. Modbus TCP
-3. ASCII
+- Modbus RTU- koristi RS-485, binarna verzija razmjene podataka
+- Modbus TCP
+- ASCII
 
 ## MODBUS-TCP
 
@@ -21,8 +21,8 @@ Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili 
 ## Ciljevi zadatka
 
  - Uspostavljanje komunikacije između Mastera i Slejva pomoću Modbus TCP protokola
- Savladavanje API biblioteke libmodbus 
- Upoznavanje sa radom Wireshark softvera
+ - Savladavanje API biblioteke libmodbus 
+ - Upoznavanje sa radom Wireshark softvera
 
 
 
