@@ -28,9 +28,9 @@ Jedan Raspberry Pi je u ulozi klijenta (Modbus Master), a drugi Raspberry Pi ima
 Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol koriste se biblioteka [libmodbus](https://libmodbus.org/).
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
-U nastavku je navedeno nekoliko btnih funkcija koje smo koristili za uspostavljanje Modbus TCP komunikacije, a koje se nalaze u ***libmodbus*** biblioteci.
+U nastavku su navedene neke od funkcija koje smo koristili za uspostavljanje Modbus TCP komunikacije, a koje se nalaze u ***libmodbus*** biblioteci.
 
-Funkcija ***modbus_new_tcp*** kreira novi libmodbus konktekst za TCP/IPv4.
+Funkcija ***modbus_new_tcp("192.168.100.102", 502)*** kreira novi libmodbus konktekst za TCP/IPv4.
 Argument IP specificira IP adresu servera sa kojim klijent želi da uspostavi vezu, a argument PORT je TCP port koji treba koristiti.
 ```
  ctx = modbus_new_tcp("192.168.100.102", 502);  
@@ -39,7 +39,7 @@ if (ctx == NULL) {
    return -1;
  } 
  ```
-U Master skripti funkcija ***modbus_read_registers*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
+U Master skripti funkcija ***modbus_read_registers(ctx, 0, 10, tab_reg)*** će pročitati sadržaj 10 registara za čuvanje na adresu slave uredjaja.
 Rezultat čitanja se čuva u nizu tab_reg.
 ```
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); 
@@ -60,7 +60,7 @@ if (mb_mapping == NULL) {
     return -1;
   }
 ```
-Funkcija ***modbus_tcp_listen*** kreira socket i sluša zahtjev od određene IP adrese.
+Funkcija ***modbus_tcp_listen(ctx, 1)*** kreira socket i sluša zahtjev od određene IP adrese.
 ```
 socket = modbus_tcp_listen(ctx, 1); 
  if (socket == -1) {
@@ -74,13 +74,15 @@ Naredna funkcija će izdvojiti prvu vezu u redu veza na čekanju, kreirati novi 
 modbus_tcp_accept(ctx, &socket);
 ```
 U nastavku je navedena funkcija kojom se setuje podatak u tip float i smiješta se u registar.
-
 ```
 modbus_set_float_dcba(temp=get_cpu_temp()+0.5, mb_mapping->tab_registers+i);
 ```
+Naredna funkcija će primiti zahtjev za indikaciju.
+Ovu funkciju koristi Modbus slave za prijem i analizu zahtijeva za indikaciju koje šalje master.
 ```
 rc = modbus_receive(ctx, query); 
 ```
+Funkcija ***modbus_reply(ctx,query,rc,mb_mapping)*** šalje odgovor na primljeni zahtjev.
 ```
 modbus_reply(ctx, query, rc, mb_mapping);
 ```
