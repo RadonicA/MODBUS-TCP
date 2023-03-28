@@ -20,9 +20,9 @@ Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili 
 
 ## Ciljevi zadatka
 
-“*” Uspostavljanje komunikacije između Mastera i Slejva pomoću Modbus TCP protokola
-“*” Savladavanje API biblioteke libmodbus 
-“*” Upoznavanje sa radom Wireshark softvera
+"*" Uspostavljanje komunikacije između Mastera i Slejva pomoću Modbus TCP protokola
+ Savladavanje API biblioteke libmodbus 
+ Upoznavanje sa radom Wireshark softvera
 
 
 
