@@ -18,6 +18,12 @@ Kada se Modbus informacije šalju korišćenjem ovih protokola, podaci se prosle
 Ovaj protokol je zapravo verzija Modbus RTU transfera koja je prilagodjena Ethernet okruženju.
 Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili transferu.
 
+## Ciljevi zadatka
+
+“*” Uspostavljanje komunikacije između Mastera i Slejva pomoću Modbus TCP protokola
+“*” Savladavanje API biblioteke libmodbus 
+“*” Upoznavanje sa radom Wireshark softvera
+
 
 
 ## Eskperimentalna realizacija MODBUS TCP protokola 
