@@ -123,14 +123,14 @@ Za instalaciju Wireshark softvera potrebno je ispratiti korake na [link](https:/
 Na slici ispod je prikazan segment Modbus TCP komunikacije u Wireshark-u.
 ![image](https://user-images.githubusercontent.com/127748379/228214315-6a60780d-274e-45c9-83d3-5aa5ef63a6a2.png)
 
-Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju izmedju uredjaja povezanih na fizicku mrezu(Ethernet).Prije prenosa podataka zahtijeva potvrdu o uspostavljanju konekcije, tako da u Wireshark-u vidimo cetiri poruke:
+Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju izmedju uredjaja povezanih na fizičku mrežu (Ethernet).Prije prenosa podataka zahtijeva potvrdu o uspostavljanju konekcije, tako da u Wireshark-u vidimo četiri poruke:
 
- **Modbus Request**- klijent salje zahtjev serveru za uspostavljanje konekcije, vrsi se sinhronizacija obije strane\
+ **Modbus Request**- klijent šalje zahtjev serveru za uspostavljanje konekcije, vrši se sinhronizacija obije strane\
  **Modbus Indication**- server prima zahtjev za uspostavljanje konekcije \
- **Modbus Response**- server salje potvrdu(ACK) o primljenoj poruci \
- **Modbus Confirmation**- klijent prima potvrdu sa strane servera, te se uspostavlja konekcija i pocinje prenos podataka
+ **Modbus Response**- server šalje potvrdu(ACK) o primljenoj poruci \
+ **Modbus Confirmation**- klijent prima potvrdu sa strane servera, te se uspostavlja konekcija i počinje prenos podataka
  
-  Wireshark je softver koji nam omogucava da prikazemo i **throughput**(kolicinu korisnih podataka koji se prenose u jedinici vremena).
+  Wireshark je softver koji nam omogućava da prikažemo i **throughput** (količinu korisnih podataka koji se prenose u jedinici vremena).
   
   
   ## Modbus TCP convert to RTU 
@@ -144,4 +144,6 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
   ```
   Argument /dev/ttyAMA0 specificira ime serijskog porta kojim upravlja Operativni sistem.
   Drugi argument ima vrijednost 9600 i predstavlja brzinu prenosa komunikacije, dok data_bits odredjuje broj bitova podataka i u našem slučaju iznosi 8.
-  Na kraju, imamo i jedan stop_bits.
+  Na kraju, imamo i jedan stop_bit.
+  
+
