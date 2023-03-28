@@ -119,7 +119,7 @@ Treći korak jeste da podesimo statičku IP adresu na Raspberry Pi platformi, je
 ## Wireshark
 
 Wireshark je softver za analizu mrežnog saobraćaja. Riječ je o alatu koji hvata različite mrežne pakete i detaljno ih razlaže. Kada se ovi paketi razbiju, možemo ih koristiti za analizu u realnom vremenu ili van mreže.
-Za instalaciju Wireshark softvera potrebno je ispratiti korake na [link](https://www.geeksforgeeks.org/how-to-install-and-use-wireshark-on-ubuntu-linux/)
+Za instalaciju Wireshark softvera potrebno je ispratiti korake na [link](https://www.geeksforgeeks.org/how-to-install-and-use-wireshark-on-ubuntu-linux/).
 Na slici ispod je prikazan segment Modbus TCP komunikacije u Wireshark-u.
 ![image](https://user-images.githubusercontent.com/127748379/228214315-6a60780d-274e-45c9-83d3-5aa5ef63a6a2.png)
 
