@@ -137,7 +137,11 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
   
   Ukoliko je temperatura Servera veca od zadatog uslova, Master salje zahtjev za ukljucivanje releja.
   Komunikacija sa relejom se odvija pomoću serijske linije RS485 koji je spojen na treći RPi. 
-  Za serijsku komunikaciju se koristi Modbus RTU protokol
+  Za serijsku komunikaciju se koristi Modbus RTU protokol.
+  Naredna funkcija definiše Modbus RTU komunikaciju, tj. ima ulogu da dodijeli i inicijalizuje modbus_t  strukturu za komunikaciju u RTU režimu na serijskoj liniji.
    ```
     modbus_new_rtu("/dev/ttyAMA0", 9600, 'N', 8, 1);
   ```
+  Argument /dev/ttyAMA0 specificira ime serijskog porta kojim upravlja Operativni sistem.
+  Drugi argument ima vrijednost 9600 i predstavlja brzinu prenosa komunikacije, dok data_bits odredjuje broj bitova podataka i u našem slučaju iznosi 8.
+  Na kraju, imamo i jedan stop_bits.
