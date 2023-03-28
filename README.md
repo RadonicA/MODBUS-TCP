@@ -4,8 +4,9 @@
 Modbus je serijski komunikacioni protokol predstavljen 1979. godine od strane kompanije Modicon.
 Modbus je aplikacioni protokol koji dodjejuje načine upravljanja i prosljedjivanja podataka izmedju različitih slojeva bez uticaja protokola koji koristi sljedeći neporedni sloj.
 Ovaj protokol je master/slave protokol sa half-duplex prenosom iz grupe Filedbus protokola.
+Osnovne prednosti Modbus protokola su to da je razvijen za industrijske primjene, ima otvorenu specifikaciju bez troškova licence i jednostavan je za implementaciju i održavanje.
 Koriste se tri tipa Modbus prenosa:
-1. Modbus RTU- poruke se sastoje od binarnih bajtova
+1. Modbus RTU- koristi RS-485, binarna verzija razmjene podataka
 2. Modbus TCP
 3. ASCII
 
@@ -43,9 +44,11 @@ Rezultat čitanja se čuva u nizu tab_reg.
 ```
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); 
 ```
+Narednom funkcijom će se uspostaviti veza sa Modbus serverom.
 ```
 modbus_connect(ctx); 
 ```
+Funkcija koja će dodijeliti četiri niza za skladištenje bitova, ulaznih bitova, 20 registara i ulaznih registara, definisana je u nastavku.
 ```
 mb_mapping = modbus_mapping_new(0, 0, 20, 0); 
 if (mb_mapping == NULL) {
