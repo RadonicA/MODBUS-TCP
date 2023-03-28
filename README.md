@@ -2,7 +2,7 @@
 # MODBUS
 
 Modbus je serijski komunikacioni protokol predstavljen 1979. godine od strane kompanije Modicon.
-Modbus je aplikacioni protokol koji dodjejuje načine upravljanja i prosljedjivanja podataka izmedju različitih slojeva bez uticaja protokola koji koristi sljedeći neporedni sloj.
+Modbus je aplikacioni protokol koji dodjejuje načine upravljanja i prosljeđivanja podataka između različitih slojeva bez uticaja protokola koji koristi sljedeći neposredni sloj.
 Ovaj protokol je master/slave protokol sa half-duplex prenosom iz grupe Filedbus protokola.
 Osnovne prednosti Modbus protokola su to da je razvijen za industrijske primjene, ima otvorenu specifikaciju bez troškova licence i jednostavan je za implementaciju i održavanje.
 Koriste se tri tipa Modbus prenosa:
@@ -13,9 +13,9 @@ Koriste se tri tipa Modbus prenosa:
 ## MODBUS-TCP
 
 Modbus TCP/IP (Transmission Control protocol/Internet protocol) je jednostavan Modbus protokol koji radi na Eternetu preko TCP interfejsa.
-Modbus TCP/IP je takodje poznat kao Modbus TCP.
-Kada se Modbus informacije šalju korišćenjem ovih protokola, podaci se prosleđuju u TCP gdje se dodatne informacije prilažu i daju IP-u.IP zatim stavlja podatke u paket i prenosi ih.
-Ovaj protokol je zapravo verzija Modbus RTU transfera koja je prilagodjena Ethernet okruženju.
+Modbus TCP/IP je takođe poznat kao Modbus TCP.
+Kada se Modbus informacije šalju korišćenjem ovih protokola, podaci se prosleđuju u TCP gdje se dodatne informacije prilažu i daju IP-u. IP zatim stavlja podatke u paket i prenosi ih.
+Ovaj protokol je zapravo verzija Modbus RTU transfera koja je prilagođena Ethernet okruženju.
 Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili transferu.
 
 ## Ciljevi zadatka
@@ -28,12 +28,12 @@ Modbus TCP koristi RTU binarni prenos sa TCP/IP detekcijom greške u poruci ili 
 
 ## Eskperimentalna realizacija MODBUS TCP protokola 
 
-Jedan Raspberry Pi je u ulozi klijenta (Modbus Master), a drugi Raspberry Pi ima ulogu servera (Modbus Slave). Na zahtjev Mastera, Slave ocitava vrijednost temperature procesora Rpi-a, mapira tu vrijednost u prostor modbus adresa i salje ga u odgovoru Masteru.   
+Jedan Raspberry Pi je u ulozi klijenta (Modbus Master), a drugi Raspberry Pi ima ulogu servera (Modbus Slave). Na zahtjev Mastera, Slave očitava vrijednost temperature procesora Rpi-a, mapira tu vrijednost u prostor modbus adresa i šalje ga u odgovoru Masteru.   
 
 
 ## Libmodbus 
 
-Za slanje i primanje podataka pomoću uredjaja koji koriste Modbus prokol koriste se biblioteka [libmodbus](https://libmodbus.org/).
+Za slanje i primanje podataka pomoću uređaja koji koriste Modbus protokol koriste se biblioteka [libmodbus](https://libmodbus.org/).
 Ova biblioteka sadrži različite pozadine za komunikaciju preko raličitih mreža.
 http://www.modbus.org stranica pruža dokumentaciju o Modbus specifikacijama i vodičima za implemetaciju.
 U nastavku su navedene neke od funkcija koje smo koristili za uspostavljanje Modbus TCP komunikacije, a koje se nalaze u ***libmodbus*** biblioteci.
@@ -86,7 +86,7 @@ U nastavku je navedena funkcija kojom se setuje podatak u tip float i smiješta 
 modbus_set_float_dcba(temp=get_cpu_temp()+0.5, mb_mapping->tab_registers+i);
 ```
 Naredna funkcija će primiti zahtjev za indikaciju.
-Ovu funkciju koristi Modbus slave za prijem i analizu zahtijeva za indikaciju koje šalje master.
+Ovu funkciju koristi Modbus slave za prijem i analizu zahtjeva za indikaciju koje šalje master.
 ```
 rc = modbus_receive(ctx, query); 
 ```
@@ -95,7 +95,7 @@ Funkcija ***modbus_reply(ctx,query,rc,mb_mapping)*** šalje odgovor na primljeni
 modbus_reply(ctx, query, rc, mb_mapping);
 ```
 
-Pomocu funkcije ***get_cpu_temp()*** ocitavamo temperaturu CPU Raspberry Pi-a. 
+Pomocu funkcije ***get_cpu_temp()*** očitavamo temperaturu CPU Raspberry Pi-a. 
 ```
 float get_cpu_temp() {
    FILE *fp;
@@ -123,7 +123,7 @@ Za instalaciju Wireshark softvera potrebno je ispratiti korake na [link](https:/
 Na slici ispod je prikazan segment Modbus TCP komunikacije u Wireshark-u.
 ![image](https://user-images.githubusercontent.com/127748379/228214315-6a60780d-274e-45c9-83d3-5aa5ef63a6a2.png)
 
-Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju izmedju uredjaja povezanih na fizičku mrežu (Ethernet).Prije prenosa podataka zahtijeva potvrdu o uspostavljanju konekcije, tako da u Wireshark-u vidimo četiri poruke:
+Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju između uređaja povezanih na fizičku mrežu (Ethernet). Prije prenosa podataka zahtijeva potvrdu o uspostavljanju konekcije, tako da u Wireshark-u vidimo četiri poruke:
 
  **Modbus Request**- klijent šalje zahtjev serveru za uspostavljanje konekcije, vrši se sinhronizacija obije strane\
  **Modbus Indication**- server prima zahtjev za uspostavljanje konekcije \
@@ -135,15 +135,15 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
   
   ## Modbus TCP convert to RTU 
   
-  Ukoliko je temperatura Servera veca od zadatog uslova, Master salje zahtjev za ukljucivanje releja.
+  Ukoliko je temperatura Servera veca od zadatog uslova, Master šalje zahtjev za uključivanje releja.
   Komunikacija sa relejom se odvija pomoću serijske linije RS485 koji je spojen na treći RPi. 
   Za serijsku komunikaciju se koristi Modbus RTU protokol.
-  Naredna funkcija definiše Modbus RTU komunikaciju, tj. ima ulogu da dodijeli i inicijalizuje modbus_t  strukturu za komunikaciju u RTU režimu na serijskoj liniji.
+  Naredna funkcija definiše Modbus RTU komunikaciju, tj. ima ulogu da dodijeli i inicijalizuje modbus_t strukturu za komunikaciju u RTU režimu na serijskoj liniji.
    ```
     modbus_new_rtu("/dev/ttyAMA0", 9600, 'N', 8, 1);
   ```
   Argument /dev/ttyAMA0 specificira ime serijskog porta kojim upravlja Operativni sistem.
-  Drugi argument ima vrijednost 9600 i predstavlja brzinu prenosa komunikacije, dok data_bits odredjuje broj bitova podataka i u našem slučaju iznosi 8.
+  Drugi argument ima vrijednost 9600 i predstavlja brzinu prenosa komunikacije, dok data_bits određuje broj bitova podataka i u našem slučaju iznosi 8.
   Na kraju, imamo i jedan stop_bit.
   
    ```
@@ -154,4 +154,4 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
   ``` 
      modbus_write_bit(ctx, COIL_ADDRESS, TRUE); 
   ```
-Kao krajnji uredjaj koristimo relej koji se uključuje upisivanjem logičke jedinice u njegovu adresu.
+Kao krajnji uređaj koristimo relej koji se uključuje upisivanjem logičke jedinice u njegovu adresu.
