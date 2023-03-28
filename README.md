@@ -156,4 +156,4 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
   ```
 Kao krajnji uređaj koristimo relej koji se uključuje upisivanjem logičke jedinice u njegovu adresu.
 
-*Detaljnije objašnjenje princpipa rada pomoću Modbus TCP protokola prikazano je u videu.[Modbus TCP](https://youtu.be/uY2jOmN6ZY0)*
+Više o samoj komunikaciji uređaja pomoću Modbus TCP protokola prikazano je u videu.[Modbus TCP](https://youtu.be/uY2jOmN6ZY0)
