@@ -60,6 +60,7 @@ if (mb_mapping == NULL) {
     return -1;
   }
 ```
+Funkcija ***modbus_tcp_listen*** kreira socket i sluša zahtjev od određene IP adrese.
 ```
 socket = modbus_tcp_listen(ctx, 1); 
  if (socket == -1) {
@@ -68,9 +69,12 @@ socket = modbus_tcp_listen(ctx, 1);
     return -1;
   }
 ```
+Naredna funkcija će izdvojiti prvu vezu u redu veza na čekanju, kreirati novi socket i sačuvati ga u libmodbus kontekst dat u argumentu funkcije.
 ```
 modbus_tcp_accept(ctx, &socket);
 ```
+U nastavku je navedena funkcija kojom se setuje podatak u tip float i smiješta se u registar.
+
 ```
 modbus_set_float_dcba(temp=get_cpu_temp()+0.5, mb_mapping->tab_registers+i);
 ```
