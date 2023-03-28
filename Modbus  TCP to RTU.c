@@ -32,7 +32,7 @@ modbus_new_rtu("/dev/ttyAMA0", 9600, 'N', 8, 1);
     modbus_rtu_set_serial_mode(ctx, MODBUS_RTU_RS485);
     modbus_set_debug(ctx, TRUE);
 
-        modbus_enable_rpi(ctx, TRUE); //OMOGUCUVANJE GPIO PIN KOJIM KONTROLISEMO RESIVER
+        modbus_enable_rpi(ctx, TRUE); //OMOGUCUVANJE GPIO PIN KOJIM KONTROLISEMO RELEJ
       modbus_configure_rpi_bcm_pins(ctx, BCM_PIN_DE, BCM_PIN_RE); //KOJIM PINOM KONTROLISEMO
         modbus_rpi_pin_export_direction(ctx);
 
