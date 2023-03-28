@@ -150,3 +150,8 @@ Modbus TCP je siguran protokol koji omogucava **klijent-server** komunikaciju iz
     modbus_rtu_set_serial_mode(ctx, MODBUS_RTU_RS485);
  ```
   Ova funkcija postavlja serijsku liniju za RS-485 komunikaciju.
+  
+  ``` 
+     modbus_write_bit(ctx, COIL_ADDRESS, TRUE); 
+  ```
+Kao krajnji uredjaj koristimo relej koji se uključuje upisivanjem logičke jedinice u njegovu adresu.
