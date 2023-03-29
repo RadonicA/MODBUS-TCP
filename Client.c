@@ -19,7 +19,8 @@ uint16_t tab_reg[20];// alocira registre tipa unsigned int
 int rc,i;
 modbus_set_debug(ctx, 1);
 modbus_connect(ctx); // ostvaruje konekciju na dati server
-
+while(1)
+{
 rc = modbus_read_registers(ctx, 0, 10, tab_reg); // cita registre na udaljenom serveru
 
 if (rc == 10) {
@@ -30,7 +31,8 @@ printf("%f\n", *(float*)tab_reg+i); // ispisuje procitane registre u float forma
 else {
    fprintf(stderr, "Failed to read registers: %s\n", modbus_strerror(errno));
 }
-
+sleep(3);
+}
 modbus_close(ctx);
 modbus_free(ctx); // zatvaranje i oslobadjanje konteksta
 
