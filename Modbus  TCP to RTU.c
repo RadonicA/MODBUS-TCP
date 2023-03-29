@@ -26,8 +26,8 @@ int main()
     rc = modbus_receive(ctx, query);
         if (rc > 0)
         {
-                 modbus_send_raw_request(ctx, query, rc);
-modbus_new_rtu("/dev/ttyAMA0", 9600, 'N', 8, 1);
+             modbus_send_raw_request(ctx, query, rc);
+    modbus_new_rtu("/dev/ttyAMA0", 9600, 'N', 8, 1);
     modbus_set_slave(ctx, SERVER_ID);
     modbus_rtu_set_serial_mode(ctx, MODBUS_RTU_RS485);
     modbus_set_debug(ctx, TRUE);
